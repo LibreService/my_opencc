@@ -32,3 +32,4 @@ build
 
 *.js.map
 public/worker.js
+.vercel
