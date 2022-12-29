@@ -158,6 +158,7 @@ function copy () {
           <n-button
             circle
             secondary
+            :disabled="converted.length === 0"
             style="font-size: 24px"
             @click="copy"
           >
