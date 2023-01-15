@@ -1,6 +1,9 @@
 {
-  "name": "my-opencc",
+  "name": "@libreservice/my-opencc",
   "version": "0.1.0",
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/LibreService/my_opencc",
   "author": {
     "name": "Qijia Liu",
@@ -23,7 +26,7 @@
   },
   "devDependencies": {
     "@libreservice/my-widget": "^0.1.2",
-    "@libreservice/my-worker": "^0.2.2",
+    "@libreservice/my-worker": "^0.3.0",
     "@playwright/test": "^1.29.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.1",

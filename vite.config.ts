@@ -3,7 +3,30 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import replace from '@rollup/plugin-replace'
 import { run } from 'vite-plugin-run'
-import { VitePWA } from 'vite-plugin-pwa'
+import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa'
+
+const resources = ['opencc.data', 'opencc.js', 'opencc.wasm']
+
+const workbox: VitePWAOptions["workbox"] = {
+  globPatterns: [
+    '**/*.{js,css,html}',
+    'apple-touch-icon.png',
+    ...resources
+  ]
+}
+
+if (process.env.LIBRESERVICE_CDN) {
+  workbox.manifestTransforms = [
+    manifest => ({
+      manifest: manifest.map(entry => resources.includes(entry.url) ? {
+        url: process.env.LIBRESERVICE_CDN + entry.url,
+        revision: entry.revision,
+        size: entry.size
+      } : entry),
+      warnings: []
+    })
+  ]
+}
 
 const plugins = [
   replace({
@@ -12,14 +35,7 @@ const plugins = [
   }),
   VitePWA({
     registerType: 'autoUpdate',
-    workbox: {
-      globPatterns: [
-        '**/*.{js,css,html}',
-        'apple-touch-icon.png',
-        'opencc.data',
-        'opencc.wasm'
-      ]
-    },
+    workbox,
     manifest: {
       name: 'My OpenCC',
       short_name: 'My OpenCC',

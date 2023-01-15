@@ -1,11 +1,7 @@
-import { expose } from '@libreservice/my-worker'
+import { loadWasm, expose } from '@libreservice/my-worker'
 
-importScripts('/opencc.js')
-
-const readyPromise = new Promise(resolve => {
-  Module.onRuntimeInitialized = () => {
-    resolve(null)
-  }
+const readyPromise = loadWasm('opencc.js', {
+  url: '__LIBRESERVICE_CDN__'
 })
 
 expose({
