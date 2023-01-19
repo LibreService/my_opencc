@@ -14,6 +14,9 @@ tw|tw2s(p)|tw2t|-|-|-
 hk|hk2s|hk2t|-|-|-
 jp|-|jp2t|-|-|-
 
+## Self host
+Download latest [artifact](https://github.com/LibreService/my_opencc/releases/download/latest/my-opencc-dist.zip) built by GitHub Actions.
+
 ## Development workflow
 My OpenCC can be built on Linux and macOS.
 
@@ -62,6 +65,12 @@ pnpm run test
 ### Preview
 ```sh
 pnpm run preview
+```
+### Deploy
+```sh
+export LIBRESERVICE_CDN=https://cdn.jsdelivr.net/npm/@libreservice/my-opencc@VERSION/dist/ # optional
+vercel build --prod
+vercel deploy --prebuilt --prod
 ```
 
 ## License
