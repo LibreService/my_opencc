@@ -16,7 +16,7 @@ const osThemeRef = useOsTheme()
       <my-layout>
         <template #header>
           <my-header
-            icon="/LibreService.svg"
+            icon="./LibreService.svg"
             :homepage="homepage"
           />
         </template>
