@@ -4,8 +4,9 @@ import vue from '@vitejs/plugin-vue'
 import replace from '@rollup/plugin-replace'
 import { run } from 'vite-plugin-run'
 import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa'
+import { appName } from './package.json'
 
-const resources = ['opencc.data', 'opencc.js', 'opencc.wasm']
+const resources = ['opencc.js', 'opencc.wasm']
 
 const workbox: VitePWAOptions["workbox"] = {
   globPatterns: [
@@ -37,8 +38,8 @@ const plugins = [
     registerType: 'autoUpdate',
     workbox,
     manifest: {
-      name: 'My OpenCC',
-      short_name: 'My OpenCC',
+      name: appName,
+      short_name: appName,
       icons: [
         {
           src: 'LibreService.svg',

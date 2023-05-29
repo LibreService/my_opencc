@@ -27,7 +27,7 @@ pnpm-lock.yaml
 # wasm
 *.wasm
 public/opencc.js
-public/opencc.data
+public/opencc
 build
 
 *.js.map

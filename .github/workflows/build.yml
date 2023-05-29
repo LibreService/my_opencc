@@ -65,6 +65,7 @@ jobs:
         run: |
           npm i -g pnpm
           pnpm i
+          npx playwright install
           npx playwright install-deps
       - name: Download artifact
         uses: actions/download-artifact@v3

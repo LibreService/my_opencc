@@ -3,7 +3,7 @@ import { NConfigProvider, NMessageProvider, NH1, darkTheme, useOsTheme } from 'n
 import { MyLayout, MyHeader, MyFooter } from '@libreservice/my-widget'
 import MainView from './views/MainView.vue'
 import MyPwa from './components/MyPwa.vue'
-import { homepage } from '../package.json'
+import { appName, homepage } from '../package.json'
 import './main.css'
 
 const osThemeRef = useOsTheme()
@@ -22,7 +22,7 @@ const osThemeRef = useOsTheme()
         </template>
         <template #content>
           <div style="cursor: pointer; text-align: center; margin-top: 16px">
-            <n-h1>My OpenCC</n-h1>
+            <n-h1>{{ appName }}</n-h1>
           </div>
           <main-view />
         </template>
