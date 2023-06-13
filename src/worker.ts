@@ -52,9 +52,19 @@ async function loadConfig (config: string) {
   return Promise.all(files.map(file => loadFile(file)))
 }
 
+function genOcd2 (buffer: ArrayBuffer): number {
+  Module.FS.writeFile('/input.txt', new Uint8Array(buffer))
+  Module._gen_ocd2()
+  return Module.FS.lstat('/output.ocd2').size
+}
+
 expose({
   async convert (config: string, text: string): Promise<string> {
     await loadConfig(config)
     return Module.ccall('convert', 'string', ['string', 'string'], [config, text])
+  },
+  genOcd2,
+  getFile (content: ArrayBuffer) {
+    new Uint8Array(content).set(Module.FS.readFile('/output.ocd2'))
   }
 }, readyPromise)

@@ -6,7 +6,11 @@ declare global {
       lookupPath: (path: string) => void
       readFile: (path: string) => Uint8Array
       writeFile: (path: string, content: Uint8Array) => void
+      lstat: (path: string) => {
+        size: number
+      }
     }
+    _gen_ocd2: () => void
   }
 }
 

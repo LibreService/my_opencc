@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { NConfigProvider, NMessageProvider, NH1, darkTheme, useOsTheme } from 'naive-ui'
 import { MyLayout, MyHeader, MyFooter } from '@libreservice/my-widget'
-import MainView from './views/MainView.vue'
 import MyPwa from './components/MyPwa.vue'
 import { appName, homepage } from '../package.json'
 import './main.css'
@@ -24,7 +23,11 @@ const osThemeRef = useOsTheme()
           <div style="cursor: pointer; text-align: center; margin-top: 16px">
             <n-h1>{{ appName }}</n-h1>
           </div>
-          <main-view />
+          <router-view v-slot="{ Component }">
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </router-view>
         </template>
         <template #footer>
           <my-footer

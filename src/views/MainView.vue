@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { NSpace, NSelect, NButton, NIcon, NPopover, NCheckbox, NInput, NGrid, NGi, useMessage } from 'naive-ui'
 import { SwapHorizRound, ContentCopyFilled } from '@vicons/material'
 import { convert } from '../workerAPI'
+import { router } from '../router'
 
 const original = ref<string>('')
 const converted = ref<string>('')
@@ -85,6 +86,10 @@ function copy () {
   navigator.clipboard.writeText(converted.value).then(() => {
     message.success('已复制')
   })
+}
+
+function jump () {
+  router.push({ name: 'Dict' })
 }
 </script>
 
@@ -168,5 +173,12 @@ function copy () {
         复制
       </n-popover>
     </div>
+    <n-button
+      secondary
+      type="info"
+      @click="jump"
+    >
+      生成ocd2字典
+    </n-button>
   </n-space>
 </template>
