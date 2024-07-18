@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9b3b15d..a939f2b 100644
+index d7c3edc..a855025 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -132,7 +132,9 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+@@ -157,7 +157,9 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
      -std=c++14
      -Wall
    )
@@ -13,7 +13,7 @@ index 9b3b15d..a939f2b 100644
    if (CMAKE_BUILD_TYPE MATCHES Debug)
      add_definitions(-O0 -g3)
    endif ()
-@@ -196,9 +198,11 @@ endif()
+@@ -221,9 +223,11 @@ endif()
  ######## Subdirectories
  
  add_subdirectory(src)
@@ -48,3 +48,16 @@ index ffcdc5b..0de4c63 100644
  
  //#define MARISA_WORD_SIZE  (sizeof(void *) * 8)
  
+diff --git a/deps/rapidjson-1.1.0/rapidjson/document.h b/deps/rapidjson-1.1.0/rapidjson/document.h
+index e3e20df..ad362a6 100644
+--- a/deps/rapidjson-1.1.0/rapidjson/document.h
++++ b/deps/rapidjson-1.1.0/rapidjson/document.h
+@@ -322,7 +322,7 @@ struct GenericStringRef {
+     operator const Ch *() const { return s; }
+ 
+     const Ch* const s; //!< plain CharType pointer
+-    const SizeType length; //!< length of the string (excluding the trailing NULL terminator)
++    SizeType length; //!< length of the string (excluding the trailing NULL terminator)
+ 
+ private:
+     //! Disallow construction from non-const array
