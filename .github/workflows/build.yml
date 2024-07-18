@@ -44,7 +44,7 @@ jobs:
         run: |
           pnpm run build
       - name: Upload artifact
-        if: ${{ github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         uses: actions/upload-artifact@v3
         with:
           name: dist
@@ -78,6 +78,7 @@ jobs:
         run: |
           pnpm run test
       - name: Release
+        if: ${{ github.ref == 'refs/heads/master' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
